@@ -15,8 +15,8 @@ typedef struct BinaryTree {
 
 Node *new_node(char key[VARIABLE_NAME_LENGTH], double value);
 
-void AddElement2Tree(BinaryTree tree, char key[VARIABLE_NAME_LENGTH], double value);
-double GetValueFromTree(BinaryTree tree, char key[VARIABLE_NAME_LENGTH]);
+void AddElement2Tree(BinaryTree *tree, char key[VARIABLE_NAME_LENGTH], double value);
+double GetValueFromTree(BinaryTree *tree, char key[VARIABLE_NAME_LENGTH]);
 
 BinaryTree *new_variable_tree();
 #endif
