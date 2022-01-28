@@ -5,9 +5,9 @@
 #include "stdlib.h"
 #include "string.h"
 
-Node *new_node(char key[VARIABLE_NAME_LENGTH], double value)
+TreeNode *new_node(char key[VARIABLE_NAME_LENGTH], double value)
 {
-    Node *node = (Node *)malloc(sizeof(Node));
+    TreeNode *node = (TreeNode *)malloc(sizeof(TreeNode));
     strcpy(node->key, key);
     node->value = value;
     node->left = NULL;
@@ -16,7 +16,7 @@ Node *new_node(char key[VARIABLE_NAME_LENGTH], double value)
 
 void AddElement2Tree(BinaryTree *tree, char key[VARIABLE_NAME_LENGTH], double value)
 {
-    Node *node = tree->root;
+    TreeNode *node = tree->root;
 
     while (1) {
         int cmp_res = strcmp(node->key, key);
@@ -44,7 +44,7 @@ void AddElement2Tree(BinaryTree *tree, char key[VARIABLE_NAME_LENGTH], double va
 
 double GetValueFromTree(BinaryTree *tree, char key[VARIABLE_NAME_LENGTH])
 {
-    Node *node = tree->root;
+    TreeNode *node = tree->root;
     while (strcmp(node->key, key) != 0) {
         if (node == NULL)
             exit(-10);
