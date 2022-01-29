@@ -20,14 +20,13 @@ void ConnectDLNodes(DLNode *node_prev, DLNode *node)
 void AddELement2Stack(Stack *stack, char item[ITEM_NAME_SIZE])
 {
     DLNode *node = new_DLNode(item);
-
     if (!(stack->end) && !(stack->start)) {
         stack->start = node;
         stack->end = node;
         return;
     }
-
     ConnectDLNodes(stack->end, node);
+    stack->end = node;
 }
 
 void PopElementStack(Stack *stack, char dest[ITEM_NAME_SIZE])
