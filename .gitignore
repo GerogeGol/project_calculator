@@ -53,3 +53,4 @@ dkms.conf
 .mailmap
 CMakeTests.txt
 cmake-build-debug
+.vscode

@@ -8,6 +8,8 @@ DLNode *new_DLNode(char item[ITEM_NAME_SIZE])
 {
     DLNode *new_node = (DLNode *)malloc(sizeof(DLNode));
     strcpy(new_node->item, item);
+    new_node->prev = NULL;
+    new_node->next = NULL;
     return new_node;
 }
 
@@ -42,4 +44,13 @@ const char *PopElementStack(Stack *stack)
 const char *GetTopElementStack(Stack *stack)
 {
     return stack->end->item;
+}
+
+void PrintStack(Stack *stack)
+{
+    DLNode *node = stack->start;
+    while (node) {
+        printf("%s ", node->item);
+        node = node->next;
+    }
 }

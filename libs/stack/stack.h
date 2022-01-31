@@ -18,4 +18,5 @@ typedef struct Stack {
 void AddELement2Stack(Stack *stack, char item[ITEM_NAME_SIZE]);
 const char *PopElementStack(Stack *stack);
 const char *GetTopElementStack(Stack *stack);
+void PrintStack(Stack *stack);
 #endif
