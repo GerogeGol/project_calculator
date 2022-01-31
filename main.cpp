@@ -1,4 +1,3 @@
-
 #include "stack/stack.h"
 #include "stdio.h"
 #include "stdlib.h"
@@ -13,6 +12,7 @@ int main(int argc, char const *argv[])
     AddELement2Stack(&stack, "300");
     AddELement2Stack(&stack, "100");
     PrintStack(&stack);
+    //test_string
     return 0;
     // lol
 }
