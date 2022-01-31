@@ -29,11 +29,17 @@ void AddELement2Stack(Stack *stack, char item[ITEM_NAME_SIZE])
     stack->end = node;
 }
 
-void PopElementStack(Stack *stack, char dest[ITEM_NAME_SIZE])
+const char *PopElementStack(Stack *stack)
 {
     DLNode *del_node = stack->end;
-    strcpy(dest, del_node->item);
+    char *value = del_node->item;
     stack->end = del_node->prev;
     free(del_node);
     del_node = NULL;
+    return value;
+}
+
+const char *GetTopElementStack(Stack *stack)
+{
+    return stack->end->item;
 }
