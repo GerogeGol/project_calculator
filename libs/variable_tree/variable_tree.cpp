@@ -16,11 +16,14 @@ TreeNode *new_node(char key[VARIABLE_NAME_LENGTH], double value)
 
 void AddElement2Tree(BinaryTree *tree, char key[VARIABLE_NAME_LENGTH], double value)
 {
-    TreeNode *node = tree->root;
+    if (!tree->root) {
+        tree->root = new_node(key, value);
+        return;
+    }
 
+    TreeNode *node = tree->root;
     while (1) {
         int cmp_res = strcmp(node->key, key);
-
         if (cmp_res == 0) {
             node->value = value;
             return;
