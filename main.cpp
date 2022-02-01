@@ -1,4 +1,4 @@
-// Наши либы
+//Наши либы
 #include "notation.h"
 #include "stack.h"
 #include "variable_tree.h"
@@ -17,7 +17,8 @@ int main(int argc, char const *argv[])
     AddELement2Stack(&stack, "100");
     PrintStack(&stack);
     char expression[N] = "1+5*2";
-    // Stack ex = to_notation(expression);
+    Stack stack_expression = to_notation(expression);
+    PrintStack(&stack_expression);
     return 0;
-    // lol
+
 }

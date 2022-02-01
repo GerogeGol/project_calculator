@@ -42,9 +42,8 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aa437fa0-fbe8-4c23-b11e-81496d0a392c" name="Changes" comment="god help me">
-      <change beforePath="$PROJECT_DIR$/libs/notation/notation.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/libs/notation/notation.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
+    <list default="true" id="aa437fa0-fbe8-4c23-b11e-81496d0a392c" name="Changes" comment="polish notation in working v0.1">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -306,7 +305,7 @@
       <updated>1643648062192</updated>
       <workItem from="1643648072197" duration="1998000" />
       <workItem from="1643733085635" duration="1502000" />
-      <workItem from="1643734672470" duration="1116000" />
+      <workItem from="1643734672470" duration="5884000" />
     </task>
     <task id="LOCAL-00001" summary="i want to die">
       <created>1643649385822</created>
@@ -336,7 +335,28 @@
       <option name="project" value="LOCAL" />
       <updated>1643735495115</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="god almost helped">
+      <created>1643735878769</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1643735878769</updated>
+    </task>
+    <task id="LOCAL-00006" summary="god almost helped">
+      <created>1643735899503</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1643735899503</updated>
+    </task>
+    <task id="LOCAL-00007" summary="polish notation in working v0.1">
+      <created>1643746811354</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1643746811354</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -356,17 +376,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="i want to die" />
     <MESSAGE value="god help me" />
-    <option name="LAST_COMMIT_MESSAGE" value="god help me" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/libs/notation/notation.cpp</url>
-          <line>1</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="god almost helped" />
+    <MESSAGE value="polish notation in working v0.1" />
+    <option name="LAST_COMMIT_MESSAGE" value="polish notation in working v0.1" />
   </component>
 </project>
