@@ -31,19 +31,27 @@ void AddELement2Stack(Stack *stack, char item[ITEM_NAME_SIZE])
     stack->end = node;
 }
 
-const char *PopElementStack(Stack *stack)
+void PopElementStack(Stack *stack, char *dest)
 {
+    if (StackIsEmpty(stack)) {
+        strcpy(dest, "");
+        return;
+    }
     DLNode *del_node = stack->end;
-    char *value = del_node->item;
+
+    if (stack->end == stack->start) {
+        stack->start = NULL;
+        stack->end = NULL;
+    }
+    strcpy(dest, del_node->item);
     stack->end = del_node->prev;
     free(del_node);
     del_node = NULL;
-    return value;
 }
 
-const char *GetTopElementStack(Stack *stack)
+void GetTopElementStack(Stack *stack, char *dest)
 {
-    return stack->end->item;
+    strcpy(dest, stack->end->item);
 }
 
 void PrintStack(Stack *stack)
@@ -53,4 +61,9 @@ void PrintStack(Stack *stack)
         printf("%s ", node->item);
         node = node->next;
     }
+}
+
+int StackIsEmpty(Stack *stack)
+{
+    return !(stack->start) && !(stack->start);
 }

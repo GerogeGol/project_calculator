@@ -16,9 +16,22 @@ int main(int argc, char const *argv[])
     AddELement2Stack(&stack, "300");
     AddELement2Stack(&stack, "100");
     PrintStack(&stack);
+    char str[ITEM_NAME_SIZE];
+    PopElementStack(&stack, str);
+    printf("%s\n", str);
+    PopElementStack(&stack, str);
+    printf("%s\n", str);
+    PopElementStack(&stack, str);
+    printf("%s\n", str);
+    PopElementStack(&stack, str);
+    printf("%s\n", str);
+    PopElementStack(&stack, str);
+    printf("%s\n", str);
+
+    PrintStack(&stack);
+    printf("%d", StackIsEmpty(&stack));
     char expression[N] = "1+5*2";
     Stack stack_expression = to_notation(expression);
     PrintStack(&stack_expression);
     return 0;
-
 }

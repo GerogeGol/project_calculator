@@ -16,7 +16,8 @@ typedef struct Stack {
 } Stack;
 
 void AddELement2Stack(Stack *stack, char item[ITEM_NAME_SIZE]);
-const char *PopElementStack(Stack *stack);
-const char *GetTopElementStack(Stack *stack);
+void PopElementStack(Stack *stack, char *dest);
+void GetTopElementStack(Stack *stack, char *dest);
 void PrintStack(Stack *stack);
+int StackIsEmpty(Stack *stack);
 #endif
