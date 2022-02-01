@@ -1,6 +1,8 @@
 //#include "stack.h"
 //#include "variable_tree.h"
 
+#include "notation.h"
+
 #include "stdio.h"
 #include "stdlib.h"
 #include "string.h"
@@ -11,4 +13,3 @@
     Stack st;
     return st;
 }*/
-
