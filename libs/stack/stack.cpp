@@ -7,6 +7,7 @@
 DLNode *new_DLNode(char item[ITEM_NAME_SIZE])
 {
     DLNode *new_node = (DLNode *)malloc(sizeof(DLNode));
+    memset(new_node->item, 0, sizeof(new_node->item));
     strcpy(new_node->item, item);
     new_node->prev = NULL;
     new_node->next = NULL;

@@ -16,6 +16,8 @@ int main(int argc, char const *argv[])
     AddELement2Stack(&stack, "300");
     AddELement2Stack(&stack, "100");
     PrintStack(&stack);
+    printf("\n");
+
     char str[ITEM_NAME_SIZE];
     PopElementStack(&stack, str);
     printf("%s\n", str);
