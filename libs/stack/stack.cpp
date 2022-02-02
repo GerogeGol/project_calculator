@@ -52,6 +52,10 @@ void PopElementStack(Stack *stack, char *dest)
 
 void GetTopElementStack(Stack *stack, char *dest)
 {
+    if (StackIsEmpty(stack)) {
+        strcpy(dest, "");
+        return;
+    }
     strcpy(dest, stack->end->item);
 }
 
