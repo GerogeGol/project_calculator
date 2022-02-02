@@ -70,5 +70,5 @@ void PrintStack(Stack *stack)
 
 int StackIsEmpty(Stack *stack)
 {
-    return !(stack->start) && !(stack->start);
+    return !(stack->start) && !(stack->end);
 }
