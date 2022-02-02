@@ -1,9 +1,7 @@
 #include "notation.h"
-
 #include "stdio.h"
 #include "stdlib.h"
 #include "string.h"
-
 #define N 100
 //to_notation функция, принимающая строку-пример и возвращающая стек с обратной польской записью
 Stack to_notation(char ex[])
@@ -15,28 +13,22 @@ Stack to_notation(char ex[])
     //number_mode нужна, поскольку числа могут содержать больше одной цифры. если 0, значит число уже передано в стек
     for (int i = 0; ex[i] != '\0' && i < N; i++)
     {
-        if(number_mode = 0)
+        if (number_mode = 0)
             to_zero(temp);
-        if (ex[i] == '(')
-        {
-            strcpy(temp,"(");
+        if (ex[i] == '(') {
+            strcpy(temp, "(");
             AddELement2Stack(&st, temp);
-        }
-        else if (ex[i] >= '0' && ex[i] <= '9')
-        {
+        } else if (ex[i] >= '0' && ex[i] <= '9') {
             add_to_string(temp, ex[i]);
 
-            if (ex[i+1] >= '0' && ex[i+1] <= '9')
+            if (ex[i + 1] >= '0' && ex[i + 1] <= '9')
                 number_mode = 1;
-            else
-            {
+            else {
                 number_mode = 0;
                 AddELement2Stack(&expression, temp);
                 to_zero(temp);
             }
-        }
-        else if (ex[i] == '+' || ex[i] == '/' || ex[i] == '*' || ex[i] == '^' || ex[i] == '-')
-        {
+        } else if (ex[i] == '+' || ex[i] == '/' || ex[i] == '*' || ex[i] == '^' || ex[i] == '-') {
 
             int ex_priority = get_priority(ex[i]);
             char top[N] = "";
@@ -46,24 +38,18 @@ Stack to_notation(char ex[])
             if (top[0] != '\0')
                 AddELement2Stack(&st, top);
             int top_priority = get_priority(top[0]);
-            if (StackIsEmpty(&st) == 1)
-            {
+            if (StackIsEmpty(&st) == 1) {
                 printf("YES %c\n", ex[i]);
                 char t[N] = {0};
                 t[0] = ex[i];
                 AddELement2Stack(&st, t);
-            }
-            else if (StackIsEmpty(&st) == 0 && top_priority < ex_priority)
-            {
+            } else if (StackIsEmpty(&st) == 0 && top_priority < ex_priority) {
                 char t[N] = {0};
                 t[0] = ex[i];
                 AddELement2Stack(&st, t);
 
-            }
-            else if (StackIsEmpty(&st) == 0 && top_priority >= ex_priority)
-            {
-                while (StackIsEmpty(&st) == 0 && top_priority >= ex_priority)
-                {
+            } else if (StackIsEmpty(&st) == 0 && top_priority >= ex_priority) {
+                while (StackIsEmpty(&st) == 0 && top_priority >= ex_priority) {
                     PopElementStack(&st, top);
                     AddELement2Stack(&expression, top);
                     PopElementStack(&st, top);
@@ -71,17 +57,27 @@ Stack to_notation(char ex[])
                     int top_priority = get_priority(top[0]);
                 }
             }
-        }
-        else if(ex[i] == ')')
-        {
+        } else if (ex[i] == ')') {
             char top[N] = "";
-            while (top[0] != '(')
-            {
+            while (top[0] != '(') {
+                PopElementStack(&st, top);
+                AddELement2Stack(&expression, top);
+            }
+        } else if (StackIsEmpty(&st) == 0 && top_priority >= ex_priority) {
+            while (StackIsEmpty(&st) == 0 && top_priority >= ex_priority) {
+                PopElementStack(&st, top);
+                AddELement2Stack(&expression, top);
+                PopElementStack(&st, top);
+                AddELement2Stack(&st, top);
+                int top_priority = get_priority(top[0]);
+            }
+        } else if (ex[i] == ')') {
+            char top[N] = "";
+            while (top[0] != '(') {
                 PopElementStack(&st, top);
                 AddELement2Stack(&expression, top);
             }
         }
-
     }
     char top[N] = "";
     PopElementStack(&st, top);
@@ -126,4 +122,14 @@ void to_zero(char s[])
     {
         s[i] = '\0';
     }
+
+
+
+
+
+
+
+
+
+
 }
