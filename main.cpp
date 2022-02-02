@@ -1,4 +1,5 @@
 //Наши либы
+#include "convertion_expression.h"
 #include "notation.h"
 #include "stack.h"
 #include "variable_tree.h"
@@ -31,7 +32,7 @@ int main(int argc, char const *argv[])
     printf("%s\n", str);
 
     PrintStack(&stack);
-    printf("%d", StackIsEmpty(&stack));
+    printf("%d\n", StackIsEmpty(&stack));
     char expression[N] = "122+5*2";
     Stack stack_expression = to_notation(expression);
     PrintStack(&stack_expression);
