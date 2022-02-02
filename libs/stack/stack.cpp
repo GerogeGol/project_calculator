@@ -66,6 +66,7 @@ void PrintStack(Stack *stack)
         printf("%s ", node->item);
         node = node->next;
     }
+    printf("\n");
 }
 
 int StackIsEmpty(Stack *stack)
