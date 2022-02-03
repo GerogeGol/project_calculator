@@ -32,7 +32,7 @@ int main(int argc, char const *argv[])
 
     PrintStack(&stack);
     printf("%d\n", StackIsEmpty(&stack));
-    char expression[N] = "(5+2)--3";
+    char expression[N] = "(5+3*2)/(2^3*(1-50))";
 
     Stack stack_expression = to_notation(expression);
     PrintStack(&stack_expression);
