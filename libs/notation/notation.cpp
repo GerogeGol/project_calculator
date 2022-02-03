@@ -21,8 +21,8 @@ Stack to_notation(char ex[])
             strcpy(temp, "(");
             AddELement2Stack(&st, temp);
         } else if ((ex[i] >= '0' && ex[i] <= '9') || ex[i] == '.'){
-            add_to_string(temp, ex[i]);
 
+            add_to_string(temp, ex[i]);
             if ((ex[i+1] >= '0' && ex[i+1] <= '9') || ex[i+1] == '.')
                 number_mode = 1;
             else {
@@ -30,7 +30,7 @@ Stack to_notation(char ex[])
                 AddELement2Stack(&expression, temp);
                 to_zero(temp);
             }
-        } else if (ex[i] == '+' || ex[i] == '/' || ex[i] == '*' || ex[i] == '^' || ex[i] == '-') {
+        } else if (ex[i] == '+' || ex[i] == '/' || ex[i] == '*' || ex[i] == '^') {
             int ex_priority = get_priority(ex[i]);
             char top[N] = "";
 
@@ -62,14 +62,60 @@ Stack to_notation(char ex[])
             char top[N] = "";
             while (top[0] != '(') {
                 PopElementStack(&st, top);
-                AddELement2Stack(&expression, top);
+                if (top[0] != '(' && top[0] != ')')
+                    AddELement2Stack(&expression, top);
+            }
+        } else if (ex[i] == '-') {
+            if (i == 0)
+            {
+                add_to_string(temp, ex[i]);
+                if ((ex[i+1] >= '0' && ex[i+1] <= '9') || ex[i+1] == '-' || ex[i+1] == '.')
+                    number_mode = 1;
+            }
+            else if (ex[i-1] == '(' || ex[i-1] == '+' || ex[i-1] == '-' || ex[i-1] == '/' || ex[i-1] == '*' || ex[i-1] == '^')
+            {
+                add_to_string(temp, ex[i]);
+                if ((ex[i+1] >= '0' && ex[i+1] <= '9') || ex[i+1] == '-' || ex[i+1] == '.')
+                    number_mode = 1;
+            }
+            else
+            {
+                int ex_priority = get_priority(ex[i]);
+                char top[N] = "";
+
+                PopElementStack(&st, top);
+
+                if (top[0] != '\0')
+                    AddELement2Stack(&st, top);
+                int top_priority = get_priority(top[0]);
+                if (StackIsEmpty(&st) == 1) {
+                    char t[N] = {0};
+                    t[0] = ex[i];
+                    AddELement2Stack(&st, t);
+                } else if (StackIsEmpty(&st) == 0 && top_priority < ex_priority) {
+                    char t[N] = {0};
+                    t[0] = ex[i];
+                    AddELement2Stack(&st, t);
+                } else if (StackIsEmpty(&st) == 0 && top_priority >= ex_priority) {
+                    while (StackIsEmpty(&st) == 0 && top_priority >= ex_priority) {
+                        PopElementStack(&st, top);
+                        if (top[0] != '(' && top[0] != ')')
+                            AddELement2Stack(&expression, top);
+                        int top_priority = get_priority(top[0]);
+                    }
+                    char t[N] = {0};
+                    t[0] = ex[i];
+                    AddELement2Stack(&st, t);
+
+                }
             }
         }
     }
     char top[N] = "";
     PopElementStack(&st, top);
     while (top[0] != '\0') {
-        AddELement2Stack(&expression, top);
+        if (top[0] != '(' && top[0] != ')')
+            AddELement2Stack(&expression, top);
         PopElementStack(&st, top);
     }
     return expression;
