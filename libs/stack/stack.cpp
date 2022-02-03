@@ -61,6 +61,9 @@ void GetTopElementStack(Stack *stack, char *dest)
 
 void PrintStack(Stack *stack)
 {
+    if (!StackIsEmpty(stack))
+        return;
+
     DLNode *node = stack->start;
     while (node) {
         printf("%s ", node->item);
