@@ -1,4 +1,0 @@
-Cannot generate into /home/george/Desktop/University/1_Course/Programming/Projects/project_calculator/cmake-build-debug
-It was created with incompatible generator 'Unix Makefiles'
-
-Please either delete it manually or select another generation directory

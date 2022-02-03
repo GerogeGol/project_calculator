@@ -1,1 +1,0 @@
-/usr/bin/c++ -g -rdynamic CMakeFiles/calc2.dir/variable_tree/variable_tree.cpp.o -o calc2 

@@ -1,0 +1,8 @@
+//
+// Created by rusla on 03.02.2022.
+//
+
+#ifndef CALCULATOR_CALCULATION_H
+#define CALCULATOR_CALCULATION_H
+
+#endif //CALCULATOR_CALCULATION_H
