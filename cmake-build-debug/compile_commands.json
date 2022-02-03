@@ -1,0 +1,27 @@
+[
+{
+  "directory": "/home/george/Desktop/University/1_Course/Programming/Projects/project_calculator/cmake-build-debug",
+  "command": "/usr/bin/c++  -I/home/george/Desktop/University/1_Course/Programming/Projects/project_calculator/libs/stack -I/home/george/Desktop/University/1_Course/Programming/Projects/project_calculator/libs/variable_tree -I/home/george/Desktop/University/1_Course/Programming/Projects/project_calculator/libs/notation -I/home/george/Desktop/University/1_Course/Programming/Projects/project_calculator/libs/convert_expression -g -o CMakeFiles/calculator.dir/main.cpp.o -c /home/george/Desktop/University/1_Course/Programming/Projects/project_calculator/main.cpp",
+  "file": "/home/george/Desktop/University/1_Course/Programming/Projects/project_calculator/main.cpp"
+},
+{
+  "directory": "/home/george/Desktop/University/1_Course/Programming/Projects/project_calculator/cmake-build-debug/libs",
+  "command": "/usr/bin/c++  -I/home/george/Desktop/University/1_Course/Programming/Projects/project_calculator/libs/stack -g -o CMakeFiles/stack.dir/stack/stack.cpp.o -c /home/george/Desktop/University/1_Course/Programming/Projects/project_calculator/libs/stack/stack.cpp",
+  "file": "/home/george/Desktop/University/1_Course/Programming/Projects/project_calculator/libs/stack/stack.cpp"
+},
+{
+  "directory": "/home/george/Desktop/University/1_Course/Programming/Projects/project_calculator/cmake-build-debug/libs",
+  "command": "/usr/bin/c++  -I/home/george/Desktop/University/1_Course/Programming/Projects/project_calculator/libs/variable_tree -g -o CMakeFiles/variable_tree.dir/variable_tree/variable_tree.cpp.o -c /home/george/Desktop/University/1_Course/Programming/Projects/project_calculator/libs/variable_tree/variable_tree.cpp",
+  "file": "/home/george/Desktop/University/1_Course/Programming/Projects/project_calculator/libs/variable_tree/variable_tree.cpp"
+},
+{
+  "directory": "/home/george/Desktop/University/1_Course/Programming/Projects/project_calculator/cmake-build-debug/libs",
+  "command": "/usr/bin/c++  -I/home/george/Desktop/University/1_Course/Programming/Projects/project_calculator/libs/notation -g -o CMakeFiles/notation.dir/notation/notation.cpp.o -c /home/george/Desktop/University/1_Course/Programming/Projects/project_calculator/libs/notation/notation.cpp",
+  "file": "/home/george/Desktop/University/1_Course/Programming/Projects/project_calculator/libs/notation/notation.cpp"
+},
+{
+  "directory": "/home/george/Desktop/University/1_Course/Programming/Projects/project_calculator/cmake-build-debug/libs",
+  "command": "/usr/bin/c++  -I/home/george/Desktop/University/1_Course/Programming/Projects/project_calculator/libs/convert_expression -g -o CMakeFiles/convert_expression.dir/convert_expression/convertion_expression.cpp.o -c /home/george/Desktop/University/1_Course/Programming/Projects/project_calculator/libs/convert_expression/convertion_expression.cpp",
+  "file": "/home/george/Desktop/University/1_Course/Programming/Projects/project_calculator/libs/convert_expression/convertion_expression.cpp"
+}
+]

@@ -1,0 +1,1 @@
+/usr/bin/c++ -g -rdynamic CMakeFiles/calc.dir/stack/stack.cpp.o -o calc 

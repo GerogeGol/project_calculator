@@ -1,0 +1,1 @@
+/usr/bin/c++ -g -rdynamic CMakeFiles/calculator.dir/main.cpp.o -o calculator  libs/libstack.a libs/libvariable_tree.a libs/libnotation.a libs/libconvert_expression.a 

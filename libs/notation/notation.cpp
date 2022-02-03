@@ -16,6 +16,7 @@ Stack to_notation(char ex[])
     for (int i = 0; ex[i] != '\0' && i < N; i++) {
         if (number_mode == 0)
             to_zero(temp);
+
         if (ex[i] == '(') {
             strcpy(temp, "(");
             AddELement2Stack(&st, temp);
@@ -47,7 +48,6 @@ Stack to_notation(char ex[])
                 char t[N] = {0};
                 t[0] = ex[i];
                 AddELement2Stack(&st, t);
-
             } else if (StackIsEmpty(&st) == 0 && top_priority >= ex_priority) {
                 while (StackIsEmpty(&st) == 0 && top_priority >= ex_priority) {
                     PopElementStack(&st, top);
