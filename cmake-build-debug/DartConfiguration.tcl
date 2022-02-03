@@ -4,17 +4,17 @@
 
 
 # Configuration directories and files
-SourceDirectory: /home/george/Desktop/University/1_Course/Programming/Projects/project_calculator
-BuildDirectory: /home/george/Desktop/University/1_Course/Programming/Projects/project_calculator/cmake-build-debug
+SourceDirectory: D:/CLion/project_calculator
+BuildDirectory: D:/CLion/project_calculator/cmake-build-debug
 
 # Where to place the cost data store
 CostDataFile: 
 
 # Site is something like machine.domain, i.e. pragmatic.crd
-Site: george-pc
+Site: DESKTOP-9GN4M6H
 
 # Build name is osname-revision-compiler, i.e. Linux-2.4.2-2smp-c++
-BuildName: Linux-c++
+BuildName: Win32-ninja
 
 # Subprojects
 LabelsForSubprojects: 
@@ -26,8 +26,8 @@ SubmitURL: http://
 NightlyStartTime: 00:00:00 EDT
 
 # Commands for the build/test/submit cycle
-ConfigureCommand: "/usr/bin/cmake" "/home/george/Desktop/University/1_Course/Programming/Projects/project_calculator"
-MakeCommand: /usr/bin/cmake --build . --config "${CTEST_CONFIGURATION_TYPE}" -- -i
+ConfigureCommand: "D:/CLion 2021.3.2/bin/cmake/win/bin/cmake.exe" "D:/CLion/project_calculator"
+MakeCommand: "D:\CLion 2021.3.2\bin\cmake\win\bin\cmake.exe" --build . --config "${CTEST_CONFIGURATION_TYPE}"
 DefaultCTestConfigurationType: Release
 
 # version control
@@ -44,7 +44,7 @@ SVNOptions:
 SVNUpdateOptions: 
 
 # Git options
-GITCommand: /usr/bin/git
+GITCommand: D:/Git/cmd/git.exe
 GITInitSubmodules: 
 GITUpdateOptions: 
 GITUpdateCustom: 
@@ -57,13 +57,13 @@ P4UpdateOptions:
 P4UpdateCustom: 
 
 # Generic update command
-UpdateCommand: /usr/bin/git
+UpdateCommand: D:/Git/cmd/git.exe
 UpdateOptions: 
 UpdateType: git
 
 # Compiler info
-Compiler: /usr/bin/c++
-CompilerVersion: 11.1.0
+Compiler: D:/CLion 2021.3.2/bin/mingw/bin/g++.exe
+CompilerVersion: 11.2.0
 
 # Dynamic analysis (MemCheck)
 PurifyCommand: 
@@ -80,7 +80,7 @@ MemoryCheckCommandOptions:
 MemoryCheckSuppressionFile: 
 
 # Coverage
-CoverageCommand: /usr/bin/gcov
+CoverageCommand: D:/CLion 2021.3.2/bin/mingw/bin/gcov.exe
 CoverageExtraFlags: -l
 
 # Testing options

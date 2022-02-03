@@ -32,7 +32,7 @@ int main(int argc, char const *argv[])
 
     PrintStack(&stack);
     printf("%d\n", StackIsEmpty(&stack));
-    char expression[N] = "1*2+6+5*2";
+    char expression[N] = "1*2+6+5^2";
 
     Stack stack_expression = to_notation(expression);
     PrintStack(&stack_expression);

@@ -40,7 +40,6 @@ Stack to_notation(char ex[])
                 AddELement2Stack(&st, top);
             int top_priority = get_priority(top[0]);
             if (StackIsEmpty(&st) == 1) {
-                printf("YES %c\n", ex[i]);
                 char t[N] = {0};
                 t[0] = ex[i];
                 AddELement2Stack(&st, t);
@@ -52,11 +51,12 @@ Stack to_notation(char ex[])
                 while (StackIsEmpty(&st) == 0 && top_priority >= ex_priority) {
                     PopElementStack(&st, top);
                     AddELement2Stack(&expression, top);
-                    GetTopElementStack(&st, top);
-                    // PopElementStack(&st, top);
-                    // AddELement2Stack(&st, top);
                     int top_priority = get_priority(top[0]);
                 }
+                char t[N] = {0};
+                t[0] = ex[i];
+                AddELement2Stack(&st, t);
+
             }
         } else if (ex[i] == ')') {
             char top[N] = "";

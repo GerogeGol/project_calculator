@@ -1,2 +1,0 @@
-/usr/bin/ar qc libconvert_expression.a CMakeFiles/convert_expression.dir/convert_expression/convertion_expression.cpp.o
-/usr/bin/ranlib libconvert_expression.a
