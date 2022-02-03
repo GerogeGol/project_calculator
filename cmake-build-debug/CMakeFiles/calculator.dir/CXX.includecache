@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../libs/notation/notation.h
+../stack/stack.h
+../libs/stack/stack.h
+../variable_tree/variable_tree.h
+../libs/variable_tree/variable_tree.h
+
+../libs/stack/stack.h
+
+../libs/variable_tree/variable_tree.h
+
+D:/projects/calc/project_calculator/main.cpp
+notation.h
+D:/projects/calc/project_calculator/notation.h
+stack.h
+D:/projects/calc/project_calculator/stack.h
+variable_tree.h
+D:/projects/calc/project_calculator/variable_tree.h
+stdio.h
+D:/projects/calc/project_calculator/stdio.h
+stdlib.h
+D:/projects/calc/project_calculator/stdlib.h
+

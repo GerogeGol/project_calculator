@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/projects/calc/project_calculator/libs/stack/stack.cpp
+stack.h
+D:/projects/calc/project_calculator/libs/stack/stack.h
+stdio.h
+D:/projects/calc/project_calculator/libs/stack/stdio.h
+stdlib.h
+D:/projects/calc/project_calculator/libs/stack/stdlib.h
+string.h
+D:/projects/calc/project_calculator/libs/stack/string.h
+
+D:/projects/calc/project_calculator/libs/stack/stack.h
+
