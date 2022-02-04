@@ -45,7 +45,6 @@ int operation_choosen(const char* var) {
 }
 
 void Calculation(Stack* stack) {
-    char operations[] = {"+", "-", "*", "^", "/", "%"};
     Stack result;
     DLNode *node = stack->start;
 
