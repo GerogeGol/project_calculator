@@ -10,7 +10,7 @@ double Plus(double num1, num2) {
 }
 
 double Minus(double num1, num2) {
-    return num1 - num2;
+    return num2 - num1;
 }
 
 double Multiple(double num1, num2) {
@@ -18,7 +18,7 @@ double Multiple(double num1, num2) {
 }
 
 double Division(double num1, num2) {
-    return num1 / num2;
+    return num2 / num1;
 }
 
 double unarMinus(double x) {
@@ -27,8 +27,8 @@ double unarMinus(double x) {
 
 double Pow(double num1, num2) {
     double res = 0;
-    for (int i = 0; i < num2; i++) {
-        res *= num1;
+    for (int i = 0; i < num1; i++) {
+        res *= num2;
     }
     return res;
 }

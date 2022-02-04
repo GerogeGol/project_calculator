@@ -12,6 +12,7 @@ TreeNode *new_node(char key[VARIABLE_NAME_LENGTH], double value)
     node->value = value;
     node->left = NULL;
     node->right = NULL;
+    return node;
 }
 
 void AddElement2Tree(BinaryTree *tree, char key[VARIABLE_NAME_LENGTH], double value)
