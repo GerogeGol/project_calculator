@@ -17,9 +17,15 @@ add_library(
         )
 
 add_library(
-        convert_expression
-        convert_expression/convertion_expression.cpp
-        convert_expression/convertion_expression.h
+    convert_expression
+    convert_expression/convertion_expression.cpp
+    convert_expression/convertion_expression.h
+)
+
+add_library(
+    calculation
+    calculation/calculation.h
+    calculation/calculation.cpp
 )
 
 
@@ -27,3 +33,4 @@ target_include_directories(stack PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/stack")
 target_include_directories(variable_tree PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/variable_tree")
 target_include_directories(notation PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/notation")
 target_include_directories(convert_expression PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/convert_expression")
+target_include_directories(calculation PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/calculation")
