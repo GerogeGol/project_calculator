@@ -47,6 +47,13 @@ int operation_choosen(const char* var) {
 void Calculation(Stack* stack) {
     Stack result;
     DLNode *node = stack->start;
+    double (*funcs[])(double, double, double, double, double, double) = {
+            Plus,
+            Minus,
+            Multiple,
+            Division,
+            unarMinus,
+            Pow };
 
     while (node) {
         char input[20] = { 0 };
