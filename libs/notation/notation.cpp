@@ -20,10 +20,10 @@ Stack to_notation(char ex[])
         if (ex[i] == '(') {
             strcpy(temp, "(");
             AddELement2Stack(&st, temp);
-        } else if ((ex[i] >= '0' && ex[i] <= '9') || ex[i] == '.'){
+        } else if ((ex[i] >= '0' && ex[i] <= '9') || (ex[i] >= 'a' && ex[i] <= 'z') || ex[i] == '.'){
 
             add_to_string(temp, ex[i]);
-            if ((ex[i+1] >= '0' && ex[i+1] <= '9') || ex[i+1] == '.')
+            if ((ex[i+1] >= '0' && ex[i+1] <= '9') || (ex[i] >= 'a' && ex[i] <= 'z') || ex[i+1] == '.')
                 number_mode = 1;
             else {
                 number_mode = 0;
@@ -79,13 +79,13 @@ Stack to_notation(char ex[])
             if (i == 0)
             {
                 add_to_string(temp, ex[i]);
-                if ((ex[i+1] >= '0' && ex[i+1] <= '9') || ex[i+1] == '-' || ex[i+1] == '.')
+                if ((ex[i+1] >= '0' && ex[i+1] <= '9') || (ex[i] >= 'a' && ex[i] <= 'z') || ex[i+1] == '-' || ex[i+1] == '.')
                     number_mode = 1;
             }
             else if (ex[i-1] == '(' || ex[i-1] == '+' || ex[i-1] == '-' || ex[i-1] == '/' || ex[i-1] == '*' || ex[i-1] == '^')
             {
                 add_to_string(temp, ex[i]);
-                if ((ex[i+1] >= '0' && ex[i+1] <= '9') || ex[i+1] == '-' || ex[i+1] == '.')
+                if ((ex[i+1] >= '0' && ex[i+1] <= '9') || (ex[i] >= 'a' && ex[i] <= 'z') || ex[i+1] == '-' || ex[i+1] == '.')
                     number_mode = 1;
             }
             else
