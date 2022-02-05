@@ -2,6 +2,7 @@
 #define CALCULATOR_CALCULATION_H
 
 #include "../notation/notation.h"
+#include "../stack/stack.h"
 
 double Plus(double num1, double num2);
 double Minus(double num1, double num2);
