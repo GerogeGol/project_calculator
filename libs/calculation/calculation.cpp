@@ -67,7 +67,7 @@ void Calculation(Stack* stack)
             Minus,
             Multiple,
             Division,
-            Pow};
+            Pow };
 
     // пока не достигнем конца в полученном стеке польской нотации
     while (node) {
