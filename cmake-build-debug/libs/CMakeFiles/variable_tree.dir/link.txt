@@ -1,2 +1,0 @@
-C:\msys64\mingw64\bin\ar.exe qc libvariable_tree.a CMakeFiles/variable_tree.dir/variable_tree/variable_tree.cpp.obj
-C:\msys64\mingw64\bin\ranlib.exe libvariable_tree.a

@@ -1,2 +1,0 @@
-C:\msys64\mingw64\bin\ar.exe qc libnotation.a CMakeFiles/notation.dir/notation/notation.cpp.obj
-C:\msys64\mingw64\bin\ranlib.exe libnotation.a

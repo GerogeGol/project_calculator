@@ -39,7 +39,7 @@ double Pow(double num1, double num2) {
 
 // для реализации виртуальной функции
 int operation_choosen(const char* var) {
-    char operations[] = {"+", "-", "*", "/", "^"};
+    char operations[] = {'+', '-', '*', '/', '^'};
     for (int i = 0; i < 5; i++) {
         if (!strcmp(var, operations[i])) {
             return i;
@@ -56,7 +56,7 @@ void Calculation(Stack* stack) {
     Stack result; // создаем стек, чтобы записывать туда цифры и в последующем результат
     DLNode *node = stack->start; // начинаем идти с начала полученного стека
     // для виртуальной функции
-    double (*funcs[])(double, double, double, double, double) = {
+    double (*funcs[])(double, double) = {
             Plus,
             Minus,
             Multiple,
@@ -65,15 +65,15 @@ void Calculation(Stack* stack) {
 
     // пока не достигнем конца в полученном стеке польской нотации
     while (node) {
-        char input[20] = node->item; // берем значение из стека
+        //char input[30] = node->item; // берем значение из стека
         char *ptr; // указатель на поинтер для функции strtod
-        int i = operation_choosen(input); // для работы виртуальной функции
+        int i = operation_choosen(node->item); // для работы виртуальной функции
         // проверка на запись вида "-52"
-        if (input[0] == '-' && input[1] >= '0') {
+        if (node->item[0] == '-' && node->item[1] >= '0') {
             int count_for_num = 0;
             char num[20] = {0}; // если у числа стоит впереди минус, то проводим над ним UnarMinus
-            for (int j = 1; j < strlen(input); j++) {
-                num[count_for_num++] = input[j];
+            for (int j = 1; j < strlen(node->item); j++) {
+                num[count_for_num++] = node->item[j];
             }
             double toUnarMinusResult; // записываем рез в эту переменную, затем добавляем в стек result
             toUnarMinusResult = strtod(num, &ptr);
@@ -83,7 +83,7 @@ void Calculation(Stack* stack) {
         }
         else {
             if (i == -1) { // если функция оператора возвращает минус один, значит в инпуте число
-                AddELement2Stack(&result, strtod(input, &ptr));
+                AddELement2Stack(&result, strtod(node->item, &ptr));
             }
             else { // если встретили знак, достаем два числа из стека
                 char number_one[20] = {0};

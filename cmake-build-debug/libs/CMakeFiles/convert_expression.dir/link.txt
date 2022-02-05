@@ -1,2 +1,0 @@
-C:\msys64\mingw64\bin\ar.exe qc libconvert_expression.a CMakeFiles/convert_expression.dir/convert_expression/convertion_expression.cpp.obj
-C:\msys64\mingw64\bin\ranlib.exe libconvert_expression.a
