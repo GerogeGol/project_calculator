@@ -23,7 +23,7 @@ void ConnectDLNodes(DLNode *node_prev, DLNode *node)
 void AddELement2Stack(Stack *stack, char item[ITEM_NAME_SIZE])
 {
     DLNode *node = new_DLNode(item);
-    if (!(stack->end) && !(stack->start)) {
+    if (StackIsEmpty(stack)) {
         stack->start = node;
         stack->end = node;
         return;
@@ -35,11 +35,12 @@ void AddELement2Stack(Stack *stack, char item[ITEM_NAME_SIZE])
 void PopElementStack(Stack *stack, char *dest)
 {
     if (StackIsEmpty(stack)) {
+        // exit(-10);
         strcpy(dest, "");
         return;
     }
-    DLNode *del_node = stack->end;
 
+    DLNode *del_node = stack->end;
     if (stack->end == stack->start) {
         stack->start = NULL;
         stack->end = NULL;
@@ -47,7 +48,6 @@ void PopElementStack(Stack *stack, char *dest)
     strcpy(dest, del_node->item);
     stack->end = del_node->prev;
     free(del_node);
-    del_node = NULL;
 }
 
 void GetTopElementStack(Stack *stack, char *dest)
@@ -73,6 +73,72 @@ void PrintStack(Stack *stack)
 }
 
 int StackIsEmpty(Stack *stack)
+{
+    return !(stack->start) && !(stack->end);
+}
+
+// Numeric Stack
+
+NDLNode *new_NDLNode(double item)
+{
+    NDLNode *new_node = (NDLNode *)malloc(sizeof(NDLNode));
+    new_node->item = item;
+    new_node->prev = NULL;
+    new_node->next = NULL;
+    return new_node;
+}
+
+void ConnectNDLNodes(NDLNode *node_prev, NDLNode *node)
+{
+    node_prev->next = node;
+    node->prev = node_prev;
+}
+
+void AddELement2NumStack(NumericStack *stack, double item)
+{
+    NDLNode *node = new_NDLNode(item);
+    if (NumStackIsEmpty(stack)) {
+        stack->start = node;
+        stack->end = node;
+        return;
+    }
+    ConnectNDLNodes(stack->end, node);
+    stack->end = node;
+}
+
+double PopElementNumStack(NumericStack *stack)
+{
+    if (NumStackIsEmpty(stack))
+        exit(-10);
+
+    NDLNode *del_node = stack->end;
+    double value = del_node->item;
+
+    if (stack->start = stack->end) {
+        stack->start = NULL;
+        stack->end = NULL;
+    }
+    stack->end = del_node->prev;
+    free(del_node);
+    return value;
+}
+
+double GetTopElementNumStack(NumericStack *stack)
+{
+    if (NumStackIsEmpty(stack))
+        exit(-10);
+    return stack->end->item;
+}
+
+void PrintNumStack(NumericStack *stack)
+{
+    NDLNode *node = stack->start;
+    while (node)
+        printf("%f ", node->item);
+    printf("\n");
+}
+
+int NumStackIsEmpty(NumericStack *stack)
 {
     return !(stack->start) && !(stack->end);
 }
