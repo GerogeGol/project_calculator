@@ -4,22 +4,22 @@
 #include "stdlib.h"
 
 // функция сложения двух чисел
-double Plus(double num1, num2) {
+double Plus(double num1, double num2) {
     return num1 + num2;
 }
 
 // функция вычитания двух чисел
-double Minus(double num1, num2) {
+double Minus(double num1, double num2) {
     return num2 - num1;
 }
 
 // функция умножения двух чисел
-double Multiple(double num1, num2) {
+double Multiple(double num1, double num2) {
     return num1 * num2;
 }
 
 // функция деления двух чисел
-double Division(double num1, num2) {
+double Division(double num1, double num2) {
     return num2 / num1;
 }
 
@@ -29,7 +29,7 @@ double unarMinus(double x) {
 }
 
 // функция возведения в степень
-double Pow(double num1, num2) {
+double Pow(double num1, double num2) {
     double res = 0;
     for (int i = 0; i < num1; i++) {
         res *= num2;
@@ -39,13 +39,17 @@ double Pow(double num1, num2) {
 
 // для реализации виртуальной функции
 int operation_choosen(const char* var) {
-    char operations[] = {"+", "-", "*", "^", "/", "%"};
-    for (int i = 0; i < 6; i++) {
+    char operations[] = {"+", "-", "*", "/", "^"};
+    for (int i = 0; i < 5; i++) {
         if (!strcmp(var, operations[i])) {
             return i;
         }
     }
     return -1;
+}
+
+double Operation(double num1, double num2, double (*pred)(double, double)) {
+    return pred(num1, num2);
 }
 
 void Calculation(Stack* stack) {
@@ -74,22 +78,27 @@ void Calculation(Stack* stack) {
             double toUnarMinusResult; // записываем рез в эту переменную, затем добавляем в стек result
             toUnarMinusResult = strtod(num, &ptr);
             AddELement2Stack(&result, unarMinus(toUnarMinusResult));
+            node = node->next; // переход к следующему элементу в обратной польской нотации
             continue;
         }
         else {
             if (i == -1) { // если функция оператора возвращает минус один, значит в инпуте число
                 AddELement2Stack(&result, strtod(input, &ptr));
             }
-            else {
+            else { // если встретили знак, достаем два числа из стека
                 char number_one[20] = {0};
                 PopElementStack(&result, number_one);
                 double number1 = strtod(number_one, &ptr);
                 char number_two[20] = {0};
                 PopElementStack(&result, number_two);
                 double number2 = strtod(number_two, &ptr);
+                double after_op = Operation(number1, number2, funcs[i]); // выполняем операцию
+                AddELement2Stack(&result, after_op); // записываем в стек result
             }
         }
 
-        node = node->next;
+        node = node->next; // переход к следующему элементу в обратной польской нотации
     }
+
+    PrintStack(&result); // печать результата
 }
