@@ -6,7 +6,7 @@ enable_testing()
 
 add_subdirectory(libs)
 add_executable(calculator main.cpp)
-target_link_libraries(calculator PUBLIC stack variable_tree notation convert_expression )
+target_link_libraries(calculator PUBLIC stack variable_tree notation convert_expression calculation )
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})

@@ -41,7 +41,7 @@ double Pow(double num1, double num2) {
 int operation_choosen(const char* var) {
     char operations[] = {'+', '-', '*', '/', '^'};
     for (int i = 0; i < 5; i++) {
-        if (!strcmp(var, operations[i])) {
+        if (!strcmp(var, &operations[i])) {
             return i;
         }
     }
@@ -102,5 +102,5 @@ void Calculation(Stack* stack) {
 
     PrintStack(&result); // печать результата
 }
-}
+
 
