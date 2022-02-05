@@ -20,4 +20,23 @@ void PopElementStack(Stack *stack, char *dest);
 void GetTopElementStack(Stack *stack, char *dest);
 void PrintStack(Stack *stack);
 int StackIsEmpty(Stack *stack);
+
+// NumericStack
+typedef struct NumericDoubleLinkedNode {
+    double item;
+    struct NumericDoubleLinkedNode *prev = NULL;
+    struct NumericDoubleLinkedNode *next = NULL;
+} NDLNode;
+
+typedef struct NumericStack {
+    NDLNode *start = NULL;
+    NDLNode *end = NULL;
+} NumericStack;
+
+void AddELement2NumStack(NumericStack *stack, double item);
+double PopElementNumStack(NumericStack *stack);
+double GetTopElementNumStack(NumericStack *stack);
+void PrintNumStack(NumericStack *stack);
+int NumStackIsEmpty(NumericStack *stack);
+
 #endif
