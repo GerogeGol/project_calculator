@@ -2,7 +2,7 @@
 #define VARIABLETREE_H
 
 #define VARIABLE_NAME_LENGTH 100
-
+#define NULL 0LL
 typedef struct TreeNode {
     char key[VARIABLE_NAME_LENGTH];
     double value;
@@ -11,7 +11,7 @@ typedef struct TreeNode {
 } TreeNode;
 
 typedef struct BinaryTree {
-    TreeNode *root;
+    TreeNode *root = NULL;
 } BinaryTree;
 
 void AddElement2Tree(BinaryTree *tree, char key[VARIABLE_NAME_LENGTH], double value);

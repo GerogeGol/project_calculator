@@ -12,6 +12,6 @@ double unarMinus(double x);
 double Pow(double num1, double num2);
 double Operation(double num1, double num2, double (*pred)(double, double));
 int operation_choosen(const char* var);
-void Calculation(Stack* stack);
+void Calculation(Stack* stack, BinaryTree* tree_calc);
 
-#endif //CALCULATOR_CALCULATION_H
+#endif  // CALCULATOR_CALCULATION_H

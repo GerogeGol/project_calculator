@@ -12,6 +12,10 @@
 int main(int argc, char const *argv[])
 {
     printf("test");
+    BinaryTree tree;
+    AddElement2Tree(&tree, "ad", 26);
+    AddElement2Tree(&tree, "d", 3);
+
     Stack stack;
     AddELement2Stack(&stack, "100");
     AddELement2Stack(&stack, "200");
@@ -34,14 +38,14 @@ int main(int argc, char const *argv[])
 
     PrintStack(&stack);
     printf("%d\n", StackIsEmpty(&stack));
-    char expression[N] = "(abc+xxx*2)/(z^3*(asd-50))";
-    //char expression[N] = "(26+3*2)/(2^3*(51-50))";
-    //char expression[N] = "-2+2";
+    // char expression[N] = "(abc+xxx*2)/(z^3*(asd-50))";
+    char expression[N] = "(ad+d*2)/(2^3*(51-50))";
+    // char expression[N] = "-2+2";
 
     Stack stack_expression = to_notation(expression);
     PrintStack(&stack_expression);
 
-    Calculation(&stack_expression);
+    Calculation(&stack_expression, &tree);
 
     return 0;
 }
