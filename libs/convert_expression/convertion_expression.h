@@ -13,7 +13,7 @@ void format_first_line();
 
 void format_variable_lines();
 
-char *ReadFromConsole();
+void read_from_console();
 
 char *ReadFromFile();
 
