@@ -1,8 +1,8 @@
 //Наши либы
+#include "calculation.h"
 #include "notation.h"
 #include "stack.h"
 #include "variable_tree.h"
-#include "calculation.h"
 
 //
 #include "stdio.h"

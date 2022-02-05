@@ -133,8 +133,10 @@ double GetTopElementNumStack(NumericStack *stack)
 void PrintNumStack(NumericStack *stack)
 {
     NDLNode *node = stack->start;
-    while (node)
+    while (node) {
         printf("%f ", node->item);
+        node = node->next;
+    }
     printf("\n");
 }
 
