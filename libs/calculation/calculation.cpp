@@ -77,23 +77,23 @@ void Calculation(Stack* stack) {
             }
             double toUnarMinusResult; // записываем рез в эту переменную, затем добавляем в стек result
             toUnarMinusResult = strtod(num, &ptr);
-            AddELement2Stack(&result, unarMinus(toUnarMinusResult));
+            AddELement2NumStack(&result, unarMinus(toUnarMinusResult));
             node = node->next; // переход к следующему элементу в обратной польской нотации
             continue;
         }
         else {
             if (i == -1) { // если функция оператора возвращает минус один, значит в инпуте число
-                AddELement2Stack(&result, strtod(node->item, &ptr));
+                AddELement2NumStack(&result, strtod(node->item, &ptr));
             }
             else { // если встретили знак, достаем два числа из стека
                 char number_one[20] = {0};
-                PopElementStack(&result, number_one);
+                PopElementNumStack(&result);
                 double number1 = strtod(number_one, &ptr);
                 char number_two[20] = {0};
-                PopElementStack(&result, number_two);
+                PopElementNumStack(&result);
                 double number2 = strtod(number_two, &ptr);
                 double after_op = Operation(number1, number2, funcs[i]); // выполняем операцию
-                AddELement2Stack(&result, after_op); // записываем в стек result
+                AddELement2NumStack(&result, after_op); // записываем в стек result
             }
         }
 
