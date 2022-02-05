@@ -57,23 +57,30 @@ double Operation(double num1, double num2, double (*pred)(double, double))
     return pred(num1, num2);
 }
 
-void Calculation(Stack* stack)
+void Calculation(Stack* stack, BinaryTree* tree_calc)
 {
     NumericStack result;          // создаем стек, чтобы записывать туда цифры и в последующем результат
     DLNode* node = stack->start;  // начинаем идти с начала полученного стека
     // для виртуальной функции
     double (*funcs[])(double, double) = {
-            Plus,
-            Minus,
-            Multiple,
-            Division,
-            Pow };
+        Plus,
+        Minus,
+        Multiple,
+        Division,
+        Pow};
 
     // пока не достигнем конца в полученном стеке польской нотации
     while (node) {
         // char input[30] = node->item; // берем значение из стека
         char* ptr;                              // указатель на поинтер для функции strtod
         int i = operation_choosen(node->item);  // для работы виртуальной функции
+
+        if ((node->item[0] >= 'A' && node->item[0] <= 'Z') ||
+                (node->item[0] >= 'a' && node->item[0] <= 'z')) {
+            AddELement2NumStack(&result, GetValueFromTree(tree_calc, node->item));
+            node = node->next;  // переход к следующему элементу в обратной польской нотации
+            continue;
+        }
         // проверка на запись вида "-52"
         if (node->item[0] == '-' && node->item[1] >= '0') {
             int count_for_num = 0;
