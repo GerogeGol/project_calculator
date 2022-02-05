@@ -102,3 +102,5 @@ void Calculation(Stack* stack) {
 
     PrintStack(&result); // печать результата
 }
+}
+
