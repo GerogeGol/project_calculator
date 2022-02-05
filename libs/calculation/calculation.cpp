@@ -3,28 +3,32 @@
 #include "string.h"
 #include "stdlib.h"
 
-// + - ^ * / ~
-
+// функция сложения двух чисел
 double Plus(double num1, num2) {
     return num1 + num2;
 }
 
+// функция вычитания двух чисел
 double Minus(double num1, num2) {
     return num2 - num1;
 }
 
+// функция умножения двух чисел
 double Multiple(double num1, num2) {
     return num1 * num2;
 }
 
+// функция деления двух чисел
 double Division(double num1, num2) {
     return num2 / num1;
 }
 
+// функция унарного минуса
 double unarMinus(double x) {
     return -x;
 }
 
+// функция возведения в степень
 double Pow(double num1, num2) {
     double res = 0;
     for (int i = 0; i < num1; i++) {
@@ -33,7 +37,7 @@ double Pow(double num1, num2) {
     return res;
 }
 
-
+// для реализации виртуальной функции
 int operation_choosen(const char* var) {
     char operations[] = {"+", "-", "*", "^", "/", "%"};
     for (int i = 0; i < 6; i++) {
@@ -45,31 +49,45 @@ int operation_choosen(const char* var) {
 }
 
 void Calculation(Stack* stack) {
-    Stack result;
-    DLNode *node = stack->start;
-    double (*funcs[])(double, double, double, double, double, double) = {
+    Stack result; // создаем стек, чтобы записывать туда цифры и в последующем результат
+    DLNode *node = stack->start; // начинаем идти с начала полученного стека
+    // для виртуальной функции
+    double (*funcs[])(double, double, double, double, double) = {
             Plus,
             Minus,
             Multiple,
             Division,
-            unarMinus,
             Pow };
 
+    // пока не достигнем конца в полученном стеке польской нотации
     while (node) {
-        char input[20] = { 0 };
-        int i = operation_choosen(input);
-        if (i == -1) {
-            AddELement2Stack(&result, strtod(input, node->item))
+        char input[20] = node->item; // берем значение из стека
+        char *ptr; // указатель на поинтер для функции strtod
+        int i = operation_choosen(input); // для работы виртуальной функции
+        // проверка на запись вида "-52"
+        if (input[0] == '-' && input[1] >= '0') {
+            int count_for_num = 0;
+            char num[20] = {0}; // если у числа стоит впереди минус, то проводим над ним UnarMinus
+            for (int j = 1; j < strlen(input); j++) {
+                num[count_for_num++] = input[j];
+            }
+            double toUnarMinusResult; // записываем рез в эту переменную, затем добавляем в стек result
+            toUnarMinusResult = strtod(num, &ptr);
+            AddELement2Stack(&result, unarMinus(toUnarMinusResult));
+            continue;
         }
         else {
-            char number_one[20] = {0};
-            PopElementStack(&result, number_one);
-            double number1;
-            strtod(number_one, number1);
-            char number_two[20] = {0};
-            PopElementStack(&result, number_two);
-            double number2;
-            strtod(number_two, number2);
+            if (i == -1) { // если функция оператора возвращает минус один, значит в инпуте число
+                AddELement2Stack(&result, strtod(input, &ptr));
+            }
+            else {
+                char number_one[20] = {0};
+                PopElementStack(&result, number_one);
+                double number1 = strtod(number_one, &ptr);
+                char number_two[20] = {0};
+                PopElementStack(&result, number_two);
+                double number2 = strtod(number_two, &ptr);
+            }
         }
 
         node = node->next;
