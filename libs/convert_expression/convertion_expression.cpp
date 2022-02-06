@@ -1,9 +1,9 @@
 #include "convertion_expression.h"
 
-#include "stdio.h"
-#include "string.h"
 #include "stdbool.h"
+#include "stdio.h"
 #include "stdlib.h"
+#include "string.h"
 
 /*
 Пусть Луна нам светит ярко
@@ -16,7 +16,8 @@
 Как российский автопром
 */
 
-void format_line(char *buf, char *str) { // приводим строку к стандартному виду
+void format_line(char *buf, char *str)
+{  // приводим строку к стандартному виду
     int j = 0;
     for (int i = 0; i < SIZE_STRING; ++i) {
         if (buf[i] == ' ') {
@@ -28,9 +29,10 @@ void format_line(char *buf, char *str) { // приводим строку к с�
     }
 }
 
-void parsing(BinaryTree *tree, char *str) { // парсим данные и вносим в дерево
-    char local_value[SIZE_VAR];
-    char var_name[SIZE_VAR];
+void parsing(BinaryTree *tree, char *str)
+{  // парсим данные и вносим в дерево
+    char local_value[SIZE_VAR] = {'\0'};
+    char var_name[SIZE_VAR] = {'\0'};
     double value;
     int i = 0;
     for (i = 0; str[i] != '='; ++i) {
@@ -45,16 +47,17 @@ void parsing(BinaryTree *tree, char *str) { // парсим данные и вн
     AddElement2Tree(tree, var_name, value);
 }
 
-char *read_from_console(BinaryTree *tree) { // читаем консоль и отдаем строку для ОПН
+char *read_from_console(BinaryTree *tree)
+{  // читаем консоль и отдаем строку для ОПН
     char buf[SIZE_STRING] = {'\0'};
     char exercise[SIZE_STRING] = {'\0'};
 
     bool scan_first_line = true;
     while (gets(buf)) {
-        if (scan_first_line) { // читаем первую строчку и готовим ее к ОПН
+        if (scan_first_line) {  // читаем первую строчку и готовим ее к ОПН
             format_line(buf, exercise);
             scan_first_line = false;
-        } else { // обрабатываем остальные строчки
+        } else {  // обрабатываем остальные строчки
             char str[SIZE_STRING] = {'\0'};
             format_line(buf, str);
             parsing(tree, str);
