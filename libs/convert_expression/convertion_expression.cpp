@@ -5,8 +5,6 @@
 #include "stdbool.h"
 #include "stdlib.h"
 
-#include "../variable_tree/variable_tree.h"
-
 /*
 Пусть Луна нам светит ярко
 Обгоняем иномарку
@@ -30,8 +28,10 @@ void format_line(char *buf, char *str) { // приводим строку к с�
     }
 }
 
-void parsing(BinaryTree *tree, char *str, char *var_name, double value) { // парсим данные и вносим в дерево
+void parsing(BinaryTree *tree, char *str) { // парсим данные и вносим в дерево
     char local_value[SIZE_VAR];
+    char var_name[SIZE_VAR];
+    double value;
     int i = 0;
     for (i = 0; str[i] != '='; ++i) {
         var_name[i] = str[i];
@@ -49,28 +49,16 @@ char *read_from_console(BinaryTree *tree) { // читаем консоль и о
     char buf[SIZE_STRING] = {'\0'};
     char exercise[SIZE_STRING] = {'\0'};
 
-    bool scan_first_line = 0;
+    bool scan_first_line = true;
     while (gets(buf)) {
         if (scan_first_line) { // читаем первую строчку и готовим ее к ОПН
             format_line(buf, exercise);
-            scan_first_line = 1;
+            scan_first_line = false;
         } else { // обрабатываем остальные строчки
             char str[SIZE_STRING] = {'\0'};
             format_line(buf, str);
-
-            char var_name[SIZE_VAR];
-            double value;
-            parsing(tree, str, var_name, value);
+            parsing(tree, str);
         }
     }
+    return exercise;
 }
-
-/*char *ReadFromFile() {
-    FILE *fr;
-    fr = fopen("input.txt", "rt");
-
-    char buf[SIZE_STRING] = {'\0'};
-    while (fgets(buf, SIZE_STRING, fr)) {
-
-    }
-}*/

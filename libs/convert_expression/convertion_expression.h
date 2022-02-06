@@ -1,20 +1,15 @@
 #ifndef CALCULATOR_CONVERTION_EXPRESSION_H
 #define CALCULATOR_CONVERTION_EXPRESSION_H
+#include "../variable_tree/variable_tree.h"
 
 #define SIZE_STRING 1000
 #define SIZE_VAR 100
 
-typedef struct variable {
-    char name[SIZE_VAR];
-    double value;
-} variable;
 
-void format_first_line();
+void format_line(char *buf, char *str);
 
-void format_variable_lines();
+void parsing(BinaryTree *tree, char *str);
 
-void read_from_console();
-
-char *ReadFromFile();
+char *read_from_console(BinaryTree *tree);
 
 #endif
