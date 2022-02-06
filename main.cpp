@@ -15,47 +15,6 @@
 //кек лол арбидол
 //кек лол арбидол
 
-int main2(int argc, char const *argv[])
-{
-    printf("test");
-    BinaryTree tree;
-    AddElement2Tree(&tree, "ad", 26);
-    AddElement2Tree(&tree, "d", 3);
-
-    Stack stack;
-    AddELement2Stack(&stack, "100");
-    AddELement2Stack(&stack, "200");
-    AddELement2Stack(&stack, "300");
-    AddELement2Stack(&stack, "100");
-    PrintStack(&stack);
-    printf("\n");
-
-    char str[ITEM_NAME_SIZE];
-    PopElementStack(&stack, str);
-    printf("%s\n", str);
-    PopElementStack(&stack, str);
-    printf("%s\n", str);
-    PopElementStack(&stack, str);
-    printf("%s\n", str);
-    PopElementStack(&stack, str);
-    printf("%s\n", str);
-    PopElementStack(&stack, str);
-    printf("%s\n", str);
-
-    PrintStack(&stack);
-    printf("%d\n", StackIsEmpty(&stack));
-    // char expression[N] = "(abc+xxx*2)/(z^3*(asd-50))";
-    char expression[N] = "(ad+d*2)/(2^3*(51-50))";
-    // char expression[N] = "-2+2";
-
-    Stack stack_expression = to_notation(expression);
-    PrintStack(&stack_expression);
-
-    Calculation(&stack_expression, &tree);
-
-    return 0;
-}
-
 int main()
 {
     FILE *input_file;
@@ -83,7 +42,4 @@ int main()
     PrintStack(&stack_expression);
     Calculation(&stack_expression, &tree);
     return 0;
-
-    //char s_ex[N];
-    //Stack ex = to_notation(s_ex);
 }
