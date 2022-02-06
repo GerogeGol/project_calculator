@@ -1,9 +1,7 @@
 #include "convertion_expression.h"
 
-#include "stdbool.h"
-#include "stdio.h"
 #include "stdlib.h"
-#include "string.h"
+
 
 /*
 Пусть Луна нам светит ярко
@@ -47,21 +45,3 @@ void parsing(BinaryTree *tree, char *str)
     AddElement2Tree(tree, var_name, value);
 }
 
-char *read_from_console(BinaryTree *tree)
-{  // читаем консоль и отдаем строку для ОПН
-    char buf[SIZE_STRING] = {'\0'};
-    char exercise[SIZE_STRING] = {'\0'};
-
-    bool scan_first_line = true;
-    while (gets(buf)) {
-        if (scan_first_line) {  // читаем первую строчку и готовим ее к ОПН
-            format_line(buf, exercise);
-            scan_first_line = false;
-        } else {  // обрабатываем остальные строчки
-            char str[SIZE_STRING] = {'\0'};
-            format_line(buf, str);
-            parsing(tree, str);
-        }
-    }
-    return exercise;
-}
