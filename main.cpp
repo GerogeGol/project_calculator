@@ -35,6 +35,7 @@ int main(int argc, char const *argv[])
     char ex[SIZE_STRING];
     PopElementStack(&input, ex);
     while (!StackIsEmpty(&input)) {
+
         parsing(&tree, ex);
         PopElementStack(&input, ex);
     }
@@ -42,9 +43,6 @@ int main(int argc, char const *argv[])
     PrintStack(&stack_expression);
     Calculation(&stack_expression, &tree);
     return 0;
-
-    // char s_ex[N];
-    // Stack ex = to_notation(s_ex);
 }
 
 int main2(int argc, char const *argv[])
