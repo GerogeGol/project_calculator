@@ -7,7 +7,7 @@
 
 TreeNode *new_node(char key[VARIABLE_NAME_LENGTH], double value)
 {
-    TreeNode *node = (TreeNode *)malloc(sizeof(TreeNode));
+    TreeNode *node = (TreeNode *)calloc(1, sizeof(TreeNode));
     memset(node->key, 0, sizeof(node->key));
     strcpy(node->key, key);
     node->value = value;
