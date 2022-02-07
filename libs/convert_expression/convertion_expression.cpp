@@ -44,4 +44,3 @@ void parsing(BinaryTree *tree, char *str)
     value = atof(local_value);
     AddElement2Tree(tree, var_name, value);
 }
-
