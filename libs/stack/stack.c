@@ -6,11 +6,8 @@
 
 DLNode *new_DLNode(char item[ITEM_NAME_SIZE])
 {
-    DLNode *new_node = (DLNode *)malloc(sizeof(DLNode));
-    memset(new_node->item, 0, sizeof(new_node->item));
+    DLNode *new_node = (DLNode *)calloc(1, sizeof(DLNode));
     strcpy(new_node->item, item);
-    new_node->prev = NULL;
-    new_node->next = NULL;
     return new_node;
 }
 
@@ -87,10 +84,8 @@ int StackIsEmpty(Stack *stack)
 
 NDLNode *new_NDLNode(double item)
 {
-    NDLNode *new_node = (NDLNode *)malloc(sizeof(NDLNode));
+    NDLNode *new_node = (NDLNode *)calloc(1, sizeof(NDLNode));
     new_node->item = item;
-    new_node->prev = NULL;
-    new_node->next = NULL;
     return new_node;
 }
 void SetNumericStack(Stack *stack)
