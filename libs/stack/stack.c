@@ -14,6 +14,12 @@ DLNode *new_DLNode(char item[ITEM_NAME_SIZE])
     return new_node;
 }
 
+void SetStack(Stack *stack)
+{
+    stack->start = NULL;
+    stack->end = NULL;
+}
+
 void ConnectDLNodes(DLNode *node_prev, DLNode *node)
 {
     node_prev->next = node;
@@ -86,6 +92,11 @@ NDLNode *new_NDLNode(double item)
     new_node->prev = NULL;
     new_node->next = NULL;
     return new_node;
+}
+void SetNumericStack(Stack *stack)
+{
+    stack->start = NULL;
+    stack->end = NULL;
 }
 
 void ConnectNDLNodes(NDLNode *node_prev, NDLNode *node)

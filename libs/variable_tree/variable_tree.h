@@ -11,11 +11,12 @@ typedef struct TreeNode {
 } TreeNode;
 
 typedef struct BinaryTree {
-    TreeNode *root = NULL;
+    TreeNode *root;
 } BinaryTree;
 
 void AddElement2Tree(BinaryTree *tree, char key[VARIABLE_NAME_LENGTH], double value);
 double GetValueFromTree(BinaryTree *tree, char key[VARIABLE_NAME_LENGTH]);
+void SetBinaryTree(BinaryTree *tree);
 
 BinaryTree *new_variable_tree();
 #endif

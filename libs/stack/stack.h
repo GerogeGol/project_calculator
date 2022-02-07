@@ -6,15 +6,16 @@
 
 typedef struct DoubleLinkedNode {
     char item[ITEM_NAME_SIZE];
-    struct DoubleLinkedNode *prev = NULL;
-    struct DoubleLinkedNode *next = NULL;
+    struct DoubleLinkedNode *prev;
+    struct DoubleLinkedNode *next;
 } DLNode;
 
 typedef struct Stack {
-    DLNode *start = NULL;
-    DLNode *end = NULL;
+    DLNode *start;
+    DLNode *end;
 } Stack;
 
+void SetStack(Stack *stack);
 void AddELement2Stack(Stack *stack, char item[ITEM_NAME_SIZE]);
 void PopElementStack(Stack *stack, char *dest);
 void GetTopElementStack(Stack *stack, char *dest);
@@ -24,15 +25,16 @@ int StackIsEmpty(Stack *stack);
 // NumericStack
 typedef struct NumericDoubleLinkedNode {
     double item;
-    struct NumericDoubleLinkedNode *prev = NULL;
-    struct NumericDoubleLinkedNode *next = NULL;
+    struct NumericDoubleLinkedNode *prev;
+    struct NumericDoubleLinkedNode *next;
 } NDLNode;
 
 typedef struct NumericStack {
-    NDLNode *start = NULL;
-    NDLNode *end = NULL;
+    NDLNode *start;
+    NDLNode *end;
 } NumericStack;
 
+void SetNumericStack(Stack *stack);
 void AddELement2NumStack(NumericStack *stack, double item);
 double PopElementNumStack(NumericStack *stack);
 double GetTopElementNumStack(NumericStack *stack);

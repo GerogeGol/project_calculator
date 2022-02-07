@@ -16,6 +16,11 @@ TreeNode *new_node(char key[VARIABLE_NAME_LENGTH], double value)
     return node;
 }
 
+void SetBinaryTree(BinaryTree *tree)
+{
+    tree->root = NULL;
+}
+
 void AddElement2Tree(BinaryTree *tree, char key[VARIABLE_NAME_LENGTH], double value)
 {
     if (!tree->root) {

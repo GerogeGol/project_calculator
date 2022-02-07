@@ -1,31 +1,32 @@
 add_library(
     stack
-    stack/stack.cpp
+    stack/stack.c
     stack/stack.h
 )
 
 add_library(
     variable_tree
-    variable_tree/variable_tree.cpp
+    variable_tree/variable_tree.c
     variable_tree/variable_tree.h
 )
 
 add_library(
     notation
-    notation/notation.cpp
+    notation/notation.c
     notation/notation.h
         )
 
 add_library(
     convert_expression
-    convert_expression/convertion_expression.cpp
+    convert_expression/convertion_expression.c
     convert_expression/convertion_expression.h
 )
 
 add_library(
     calculation
+    calculation/calculation.c
     calculation/calculation.h
-    calculation/calculation.cpp
+    
 )
 
 
