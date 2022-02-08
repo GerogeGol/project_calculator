@@ -41,7 +41,7 @@ double Pow(double num1, double num2)
 }
 
 double Logarithm(double num) {
-    return log(num);
+    return log2(num);
 };
 
 double Sinus(double num) {
@@ -61,7 +61,7 @@ double Cotangens(double num) {
 }
 
 double Ln(double num) {
-    return log10(num);
+    return log(num);
 }
 
 double Abs(double num) {
