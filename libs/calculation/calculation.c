@@ -57,7 +57,7 @@ double Operation(double num1, double num2, double (*pred)(double, double))
     return pred(num1, num2);
 }
 
-void Calculation(Stack* stack, BinaryTree* tree_calc)
+double Calculation(Stack* stack, BinaryTree* tree_calc)
 {
     NumericStack result;
     SetNumericStack(&result);     // создаем стек, чтобы записывать туда цифры и в последующем результат
@@ -108,5 +108,6 @@ void Calculation(Stack* stack, BinaryTree* tree_calc)
         node = node->next;  // переход к следующему элементу в обратной польской нотации
     }
 
-    PrintNumStack(&result);  // печать результата
+    // PrintNumStack(&result);  // печать результата
+    return GetTopElementNumStack(&result);
 }
