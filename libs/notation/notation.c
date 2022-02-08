@@ -94,7 +94,7 @@ Stack to_notation(char ex[])
                     char t[N] = {0};
                     t[0] = ex[i];
                     AddELement2Stack(&st, t);
-                    PrintStack(&st);
+                    PrintStack(&st, " ");
                 }
             }
         }

@@ -19,7 +19,7 @@ void SetStack(Stack *stack);
 void AddELement2Stack(Stack *stack, char item[ITEM_NAME_SIZE]);
 void PopElementStack(Stack *stack, char *dest);
 void GetTopElementStack(Stack *stack, char *dest);
-void PrintStack(Stack *stack);
+void PrintStack(Stack *stack, char *sep);
 int StackIsEmpty(Stack *stack);
 
 // NumericStack
@@ -38,7 +38,7 @@ void SetNumericStack(Stack *stack);
 void AddELement2NumStack(NumericStack *stack, double item);
 double PopElementNumStack(NumericStack *stack);
 double GetTopElementNumStack(NumericStack *stack);
-void PrintNumStack(NumericStack *stack);
+void PrintNumStack(NumericStack *stack, char *sep);
 int NumStackIsEmpty(NumericStack *stack);
 
 #endif

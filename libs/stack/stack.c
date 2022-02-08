@@ -62,14 +62,14 @@ void GetTopElementStack(Stack *stack, char *dest)
     strcpy(dest, stack->end->item);
 }
 
-void PrintStack(Stack *stack)
+void PrintStack(Stack *stack, char *sep)
 {
     if (StackIsEmpty(stack))
         return;
 
     DLNode *node = stack->start;
     while (node) {
-        printf("%s ", node->item);
+        printf("%s%s", node->item, sep);
         node = node->next;
     }
     printf("\n");
@@ -136,11 +136,13 @@ double GetTopElementNumStack(NumericStack *stack)
     return stack->end->item;
 }
 
-void PrintNumStack(NumericStack *stack)
+void PrintNumStack(NumericStack *stack, char *sep)
 {
+    if (NumStackIsEmpty(stack))
+        return;
     NDLNode *node = stack->start;
     while (node) {
-        printf("%f ", node->item);
+        printf("%f%s", node->item, sep);
         node = node->next;
     }
     printf("\n");

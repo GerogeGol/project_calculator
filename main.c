@@ -29,7 +29,7 @@ int main(int argc, char const *argv[])
         format_line(buf, str);
         AddELement2Stack(&input, str);
     }
-    PrintStack(&input);
+    PrintStack(&input, "");
 
     char ex[SIZE_STRING];
     PopElementStack(&input, ex);
@@ -38,7 +38,8 @@ int main(int argc, char const *argv[])
         PopElementStack(&input, ex);
     }
     Stack stack_expression = to_notation(ex);
-    PrintStack(&stack_expression);
-    Calculation(&stack_expression, &tree);
+    PrintStack(&stack_expression, " ");
+    double res = Calculation(&stack_expression, &tree);
+    printf("%f", res);
     return 0;
 }
