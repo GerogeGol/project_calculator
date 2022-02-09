@@ -40,11 +40,44 @@ double Pow(double num1, double num2)
     return pow(num2, num1);
 }
 
+double Logarithm(double num) {
+    return log2(num);
+};
+
+double Sinus(double num) {
+    return sin(num);
+}
+
+double Cosinus(double num) {
+    return cos(num);
+}
+
+double Tangens(double num) {
+    return tan(num);
+}
+
+double Cotangens(double num) {
+    return cos(num) / sin(num);
+}
+
+double Ln(double num) {
+    return log(num);
+}
+
+double Abs(double num) {
+    return num < 0 ? -num : num;
+}
+
+double Exp(double num) {
+    return exp(num);
+}
+
 // для реализации виртуальной функции
 int operation_choosen(const char* var)
 {
-    char operations[5][100] = {"+", "-", "*", "/", "^"};
-    for (int i = 0; i < 5; i++) {
+    char operations[13][100] = {"+", "-", "*", "/", "^", "log",
+                               "sin", "cos", "tg", "ctg", "ln", "abs", "exp"};
+    for (int i = 0; i < 13; i++) {
         if (!strcmp(var, operations[i])) {
             return i;
         }
@@ -55,6 +88,10 @@ int operation_choosen(const char* var)
 double Operation(double num1, double num2, double (*pred)(double, double))
 {
     return pred(num1, num2);
+}
+
+double Operation_one_arg(double num, double (*pred)(double)) {
+    return pred(num);
 }
 
 double Calculation(Stack* stack, BinaryTree* tree_calc)
@@ -68,7 +105,19 @@ double Calculation(Stack* stack, BinaryTree* tree_calc)
         Minus,
         Multiple,
         Division,
-        Pow};
+        Pow
+        };
+
+    double (*hard_funcs[]) (double) = {
+        Logarithm,
+        Sinus,
+        Cosinus,
+        Tangens,
+        Cotangens,
+        Ln,
+        Abs,
+        Exp
+    };
 
     // пока не достигнем конца в полученном стеке польской нотации
     while (node) {
@@ -76,33 +125,36 @@ double Calculation(Stack* stack, BinaryTree* tree_calc)
         char* ptr;                              // указатель на поинтер для функции strtod
         int i = operation_choosen(node->item);  // для работы виртуальной функции
 
-        if ((node->item[0] >= 'A' && node->item[0] <= 'Z') ||
-            (node->item[0] >= 'a' && node->item[0] <= 'z')) {
-            AddELement2NumStack(&result, GetValueFromTree(tree_calc, node->item));
-            node = node->next;  // переход к следующему элементу в обратной польской нотации
-            continue;
-        }
         // проверка на запись вида "-52"
-        if (node->item[0] == '-' && node->item[1] >= '0') {
-            int count_for_num = 0;
-            char num[20] = {0};  // если у числа стоит впереди минус, то проводим над ним UnarMinus
-            for (int j = 1; j < strlen(node->item); j++) {
-                num[count_for_num++] = node->item[j];
+        if (i == -1) {  // если функция оператора возвращает минус один, значит в инпуте число
+            if (node->item[0] == '-' && node->item[1] >= '0') {
+                int count_for_num = 0;
+                char num[20] = {0};  // если у числа стоит впереди минус, то проводим над ним UnarMinus
+                for (int j = 1; j < strlen(node->item); j++) {
+                    num[count_for_num++] = node->item[j];
+                }
+                double toUnarMinusResult;  // записываем рез в эту переменную, затем добавляем в стек result
+                toUnarMinusResult = strtod(num, &ptr);
+                AddELement2NumStack(&result, unarMinus(toUnarMinusResult));
+                node = node->next;  // переход к следующему элементу в обратной польской нотации
+                continue;
             }
-            double toUnarMinusResult;  // записываем рез в эту переменную, затем добавляем в стек result
-            toUnarMinusResult = strtod(num, &ptr);
-            AddELement2NumStack(&result, unarMinus(toUnarMinusResult));
-            node = node->next;  // переход к следующему элементу в обратной польской нотации
-            continue;
+            if ((node->item[0] >= 'A' && node->item[0] <= 'Z') ||
+                (node->item[0] >= 'a' && node->item[0] <= 'z')) {
+                AddELement2NumStack(&result, GetValueFromTree(tree_calc, node->item));
+                node = node->next;  // переход к следующему элементу в обратной польской нотации
+                continue;
+            }
+            AddELement2NumStack(&result, strtod(node->item, &ptr));
+        } else if (i >= 0 && i < 5) {  // если встретили знак, достаем два числа из стека
+            double number1 = PopElementNumStack(&result);
+            double number2 = PopElementNumStack(&result);
+            double after_op = Operation(number1, number2, funcs[i]);  // выполняем операцию
+            AddELement2NumStack(&result, after_op);                   // записываем в стек result
         } else {
-            if (i == -1) {  // если функция оператора возвращает минус один, значит в инпуте число
-                AddELement2NumStack(&result, strtod(node->item, &ptr));
-            } else {  // если встретили знак, достаем два числа из стека
-                double number1 = PopElementNumStack(&result);
-                double number2 = PopElementNumStack(&result);
-                double after_op = Operation(number1, number2, funcs[i]);  // выполняем операцию
-                AddELement2NumStack(&result, after_op);                   // записываем в стек result
-            }
+            double num = PopElementNumStack(&result);
+            double after_op = Operation_one_arg(num, hard_funcs[i-5]);
+            AddELement2NumStack(&result, after_op);
         }
 
         node = node->next;  // переход к следующему элементу в обратной польской нотации
