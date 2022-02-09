@@ -34,7 +34,7 @@ typedef struct NumericStack {
     NDLNode *end;
 } NumericStack;
 
-void SetNumericStack(Stack *stack);
+void SetNumericStack(NumericStack *stack);
 void AddELement2NumStack(NumericStack *stack, double item);
 double PopElementNumStack(NumericStack *stack);
 double GetTopElementNumStack(NumericStack *stack);

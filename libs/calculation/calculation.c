@@ -40,35 +40,43 @@ double Pow(double num1, double num2)
     return pow(num2, num1);
 }
 
-double Logarithm(double num) {
+double Logarithm(double num)
+{
     return log2(num);
 };
 
-double Sinus(double num) {
+double Sinus(double num)
+{
     return sin(num);
 }
 
-double Cosinus(double num) {
+double Cosinus(double num)
+{
     return cos(num);
 }
 
-double Tangens(double num) {
+double Tangens(double num)
+{
     return tan(num);
 }
 
-double Cotangens(double num) {
+double Cotangens(double num)
+{
     return cos(num) / sin(num);
 }
 
-double Ln(double num) {
+double Ln(double num)
+{
     return log(num);
 }
 
-double Abs(double num) {
+double Abs(double num)
+{
     return num < 0 ? -num : num;
 }
 
-double Exp(double num) {
+double Exp(double num)
+{
     return exp(num);
 }
 
@@ -76,7 +84,7 @@ double Exp(double num) {
 int operation_choosen(const char* var)
 {
     char operations[13][100] = {"+", "-", "*", "/", "^", "log",
-                               "sin", "cos", "tg", "ctg", "ln", "abs", "exp"};
+                                "sin", "cos", "tg", "ctg", "ln", "abs", "exp"};
     for (int i = 0; i < 13; i++) {
         if (!strcmp(var, operations[i])) {
             return i;
@@ -90,7 +98,8 @@ double Operation(double num1, double num2, double (*pred)(double, double))
     return pred(num1, num2);
 }
 
-double Operation_one_arg(double num, double (*pred)(double)) {
+double Operation_one_arg(double num, double (*pred)(double))
+{
     return pred(num);
 }
 
@@ -105,10 +114,9 @@ double Calculation(Stack* stack, BinaryTree* tree_calc)
         Minus,
         Multiple,
         Division,
-        Pow
-        };
+        Pow};
 
-    double (*hard_funcs[]) (double) = {
+    double (*hard_funcs[])(double) = {
         Logarithm,
         Sinus,
         Cosinus,
@@ -116,8 +124,7 @@ double Calculation(Stack* stack, BinaryTree* tree_calc)
         Cotangens,
         Ln,
         Abs,
-        Exp
-    };
+        Exp};
 
     // пока не достигнем конца в полученном стеке польской нотации
     while (node) {
@@ -153,7 +160,7 @@ double Calculation(Stack* stack, BinaryTree* tree_calc)
             AddELement2NumStack(&result, after_op);                   // записываем в стек result
         } else {
             double num = PopElementNumStack(&result);
-            double after_op = Operation_one_arg(num, hard_funcs[i-5]);
+            double after_op = Operation_one_arg(num, hard_funcs[i - 5]);
             AddELement2NumStack(&result, after_op);
         }
 
