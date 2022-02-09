@@ -3,9 +3,15 @@
 
 #define VARIABLE_NAME_LENGTH 100
 #define NULL 0LL
-typedef struct TreeNode {
-    char key[VARIABLE_NAME_LENGTH];
+typedef struct Variable {
+    char name[VARIABLE_NAME_LENGTH];
     double value;
+} Variable;
+
+typedef struct TreeNode {
+    Variable item;
+    // char key[VARIABLE_NAME_LENGTH];
+    // double value;
     struct TreeNode *left;
     struct TreeNode *right;
 } TreeNode;

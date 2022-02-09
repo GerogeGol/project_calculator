@@ -8,8 +8,8 @@
 TreeNode *new_node(char key[VARIABLE_NAME_LENGTH], double value)
 {
     TreeNode *node = (TreeNode *)calloc(1, sizeof(TreeNode));
-    strcpy(node->key, key);
-    node->value = value;
+    strcpy(node->item.name, key);
+    node->item.value = value;
     return node;
 }
 
@@ -30,7 +30,7 @@ TreeNode *_Add2Tree(TreeNode *root, char key[VARIABLE_NAME_LENGTH], double value
         return root;
     }
 
-    int cmp_res = strcmp(root->key, key);
+    int cmp_res = strcmp(root->item.name, key);
     if (cmp_res > 0)
         root->left = _Add2Tree(root->left, key, value);
     else
@@ -41,17 +41,14 @@ TreeNode *_Add2Tree(TreeNode *root, char key[VARIABLE_NAME_LENGTH], double value
 
 void AddElement2Tree(BinaryTree *tree, char key[VARIABLE_NAME_LENGTH], double value)
 {
-    if (!tree->root)
-        tree->root = _Add2Tree(tree->root, key, value);
-    else
-        _Add2Tree(tree->root, key, value);
+    tree->root = _Add2Tree(tree->root, key, value);
 }
 
 double _GetValue(TreeNode *node, char key[VARIABLE_NAME_LENGTH])
 {
-    int cmp_res = strcmp(node->key, key);
+    int cmp_res = strcmp(node->item.name, key);
     if (cmp_res == 0)
-        return node->value;
+        return node->item.value;
 
     if (cmp_res > 0)
         return _GetValue(node->left, key);
