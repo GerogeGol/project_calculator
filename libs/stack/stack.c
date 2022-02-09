@@ -88,7 +88,7 @@ NDLNode *new_NDLNode(double item)
     new_node->item = item;
     return new_node;
 }
-void SetNumericStack(Stack *stack)
+void SetNumericStack(NumericStack *stack)
 {
     stack->start = NULL;
     stack->end = NULL;
