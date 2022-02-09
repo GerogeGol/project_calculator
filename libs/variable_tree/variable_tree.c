@@ -18,52 +18,50 @@ void SetBinaryTree(BinaryTree *tree)
     tree->root = NULL;
 }
 
+int IsLeaf(TreeNode *node)
+{
+    return !node->right && !node->left;
+}
+
+TreeNode *_Add2Tree(TreeNode *root, char key[VARIABLE_NAME_LENGTH], double value)
+{
+    if (!root) {
+        root = new_node(key, value);
+        return root;
+    }
+
+    int cmp_res = strcmp(root->key, key);
+    if (cmp_res > 0)
+        root->left = _Add2Tree(root->left, key, value);
+    else
+        root->right = _Add2Tree(root->right, key, value);
+
+    return root;
+}
+
 void AddElement2Tree(BinaryTree *tree, char key[VARIABLE_NAME_LENGTH], double value)
 {
-    if (!tree->root) {
-        tree->root = new_node(key, value);
-        return;
-    }
+    if (!tree->root)
+        tree->root = _Add2Tree(tree->root, key, value);
+    else
+        _Add2Tree(tree->root, key, value);
+}
 
-    TreeNode *node = tree->root;
-    while (1) {
-        int cmp_res = strcmp(node->key, key);
-        if (cmp_res == 0) {
-            node->value = value;
-            return;
-        }
+double _GetValue(TreeNode *node, char key[VARIABLE_NAME_LENGTH])
+{
+    int cmp_res = strcmp(node->key, key);
+    if (cmp_res == 0)
+        return node->value;
 
-        if (cmp_res > 0) {
-            if (node->left == NULL) {
-                node->left = new_node(key, value);
-                return;
-            }
-            node = node->left;
-        } else {
-            if (node->right == NULL) {
-                node->right = new_node(key, value);
-                return;
-            }
-            node = node->right;
-        }
-    }
+    if (cmp_res > 0)
+        return _GetValue(node->left, key);
+    else
+        return _GetValue(node->right, key);
 }
 
 double GetValueFromTree(BinaryTree *tree, char key[VARIABLE_NAME_LENGTH])
 {
-    TreeNode *node = tree->root;
-    while (strcmp(node->key, key) != 0) {
-        if (node == NULL)
-            exit(-10);
-
-        int cmp_res = strcmp(node->key, key);
-
-        if (cmp_res > 0)
-            node = node->left;
-        else
-            node = node->right;
-    }
-    return node->value;
+    return _GetValue(tree->root, key);
 }
 
 BinaryTree *new_variable_tree()
