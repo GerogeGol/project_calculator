@@ -1,6 +1,1 @@
-poshel*(nahuy)-pidor^(0-sosi_chlen)^yebok
-poshel = 1
-nahuy = 2
-pidor = -5.23
-sosi_chlen = -1
-yebok = 1
+-51 * 2 + (9-7)^5 * (-42)

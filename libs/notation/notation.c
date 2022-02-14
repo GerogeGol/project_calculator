@@ -5,6 +5,25 @@
 #include "string.h"
 
 #define N 100
+
+int isOperator(char symbol)
+{
+    return (symbol == '+' || symbol == '/' || symbol == '*' || symbol == '^');
+}
+
+int isDigit(char symbol)
+{
+    return symbol >= '0' && symbol <= '9';
+}
+int isAlpha(char symbol)
+{
+    return (symbol >= 'a' && symbol <= 'z');
+}
+int isSymbol(char symbol)
+{
+    return (symbol >= 'a' && symbol <= 'z') || symbol == '.' || symbol == '_';
+}
+
 // to_notation функция, принимающая строку-пример и возвращающая стек с обратной польской записью
 Stack to_notation(char ex[])
 {
@@ -21,16 +40,17 @@ Stack to_notation(char ex[])
         if (ex[i] == '(') {
             strcpy(temp, "(");
             AddELement2Stack(&st, temp);
-        } else if ((ex[i] >= '0' && ex[i] <= '9') || (ex[i] >= 'a' && ex[i] <= 'z') || ex[i] == '.' || ex[i] == '_') {
+        } else if (isDigit(ex[i]) || isSymbol(ex[i])) {
             add_to_string(temp, ex[i]);
-            if ((ex[i + 1] >= '0' && ex[i + 1] <= '9') || (ex[i + 1] >= 'a' && ex[i + 1] <= 'z') || ex[i+1] == '_' || ex[i + 1] == '.')
+            if (isDigit(ex[i + 1]) || isSymbol(ex[i + 1]))
                 number_mode = 1;
             else {
                 number_mode = 0;
                 AddELement2Stack(&expression, temp);
                 to_zero(temp);
             }
-        } else if (ex[i] == '+' || ex[i] == '/' || ex[i] == '*' || ex[i] == '^') {
+            // ex[i] == '+' || ex[i] == '/' || ex[i] == '*' || ex[i] == '^'
+        } else if (isOperator(ex[i])) {
             int ex_priority = get_priority(ex[i]);
             char top[N] = "";
             GetTopElementStack(&st, top);
@@ -65,11 +85,11 @@ Stack to_notation(char ex[])
         } else if (ex[i] == '-') {
             if (i == 0) {
                 add_to_string(temp, ex[i]);
-                if ((ex[i + 1] >= '0' && ex[i + 1] <= '9') || (ex[i] >= 'a' && ex[i] <= 'z') || ex[i] == '_' || ex[i + 1] == '-' || ex[i + 1] == '.')
+                if (isDigit(ex[i + 1]) || isAlpha(ex[i]) || ex[i] == '_' || ex[i + 1] == '-' || ex[i + 1] == '.')
                     number_mode = 1;
-            } else if (ex[i - 1] == '(' || ex[i - 1] == '+' || ex[i - 1] == '-' || ex[i - 1] == '/' || ex[i - 1] == '*' || ex[i - 1] == '^') {
+            } else if (ex[i - 1] == '(' || isOperator(ex[i - 1]) || ex[i - 1] == '-') {
                 add_to_string(temp, ex[i]);
-                if ((ex[i + 1] >= '0' && ex[i + 1] <= '9') || (ex[i] >= 'a' && ex[i] <= 'z') || ex[i+1] == '_' || ex[i + 1] == '-' || ex[i + 1] == '.')
+                if (isDigit(ex[i + 1]) || isAlpha(ex[i]) || ex[i + 1] == '_' || ex[i + 1] == '-' || ex[i + 1] == '.')
                     number_mode = 1;
             } else {
                 int ex_priority = get_priority(ex[i]);
@@ -115,8 +135,10 @@ int get_priority(char temp)
         return 1;
     else if (temp == '+' || temp == '-')
         return 2;
-    else if (temp == '*' || temp == '/' || temp == '^')
+    else if (temp == '*' || temp == '/')
         return 3;
+    else if (temp == '^')
+        return 4;
     else
         return -1;
 }
