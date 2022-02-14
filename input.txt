@@ -1,5 +1,6 @@
-(abc+xxx*2)/(z^3*(asd-50))
-abc = 2
-xxx = 2
-z = 2
-asd = 2
+poshel*(nahuy)-pidor^(0-sosi_chlen)^yebok
+poshel = 1
+nahuy = 2
+pidor = -5.23
+sosi_chlen = -1
+yebok = 1
