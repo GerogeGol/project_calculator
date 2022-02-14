@@ -40,6 +40,6 @@ int main(int argc, char const *argv[])
     Stack stack_expression = to_notation(ex);
     PrintStack(&stack_expression, " ");
     double res = Calculation(&stack_expression, &tree);
-    printf("%f", res);
+    printf("%g", res);
     return 0;
 }
