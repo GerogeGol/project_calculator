@@ -40,46 +40,6 @@ double Pow(double num1, double num2)
     return pow(num2, num1);
 }
 
-double Logarithm(double num)
-{
-    return log2(num);
-};
-
-double Sinus(double num)
-{
-    return sin(num);
-}
-
-double Cosinus(double num)
-{
-    return cos(num);
-}
-
-double Tangens(double num)
-{
-    return tan(num);
-}
-
-double Cotangens(double num)
-{
-    return cos(num) / sin(num);
-}
-
-double Ln(double num)
-{
-    return log(num);
-}
-
-double Abs(double num)
-{
-    return num < 0 ? -num : num;
-}
-
-double Exp(double num)
-{
-    return exp(num);
-}
-
 // для реализации виртуальной функции
 int operation_choosen(const char* var)
 {
@@ -98,11 +58,6 @@ double Operation(double num1, double num2, double (*pred)(double, double))
     return pred(num1, num2);
 }
 
-double Operation_one_arg(double num, double (*pred)(double))
-{
-    return pred(num);
-}
-
 double Calculation(Stack* stack, BinaryTree* tree_calc)
 {
     NumericStack result;
@@ -115,16 +70,6 @@ double Calculation(Stack* stack, BinaryTree* tree_calc)
         Multiple,
         Division,
         Pow};
-
-    double (*hard_funcs[])(double) = {
-        Logarithm,
-        Sinus,
-        Cosinus,
-        Tangens,
-        Cotangens,
-        Ln,
-        Abs,
-        Exp};
 
     // пока не достигнем конца в полученном стеке польской нотации
     while (node) {
@@ -153,15 +98,11 @@ double Calculation(Stack* stack, BinaryTree* tree_calc)
                 continue;
             }
             AddELement2NumStack(&result, strtod(node->item, &ptr));
-        } else if (i >= 0 && i < 5) {  // если встретили знак, достаем два числа из стека
+        } else {  // если встретили знак, достаем два числа из стека
             double number1 = PopElementNumStack(&result);
             double number2 = PopElementNumStack(&result);
             double after_op = Operation(number1, number2, funcs[i]);  // выполняем операцию
             AddELement2NumStack(&result, after_op);                   // записываем в стек result
-        } else {
-            double num = PopElementNumStack(&result);
-            double after_op = Operation_one_arg(num, hard_funcs[i - 5]);
-            AddELement2NumStack(&result, after_op);
         }
 
         node = node->next;  // переход к следующему элементу в обратной польской нотации
