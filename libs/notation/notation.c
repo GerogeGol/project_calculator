@@ -21,16 +21,16 @@ Stack to_notation(char ex[])
         if (ex[i] == '(') {
             strcpy(temp, "(");
             AddELement2Stack(&st, temp);
-        } else if ((ex[i] >= '0' && ex[i] <= '9') || (ex[i] >= 'a' && ex[i] <= 'z') || ex[i] == '.') {
+        } else if (not_operator(ex[i]) == 1){
             add_to_string(temp, ex[i]);
-            if ((ex[i + 1] >= '0' && ex[i + 1] <= '9') || (ex[i + 1] >= 'a' && ex[i + 1] <= 'z') || ex[i + 1] == '.')
+            if (not_operator(ex[i+1]) == 1)
                 number_mode = 1;
             else {
                 number_mode = 0;
                 AddELement2Stack(&expression, temp);
                 to_zero(temp);
             }
-        } else if (ex[i] == '+' || ex[i] == '/' || ex[i] == '*' || ex[i] == '^') {
+        } else if (operator(ex[i]) == 1) {
             int ex_priority = get_priority(ex[i]);
             char top[N] = "";
             GetTopElementStack(&st, top);
@@ -65,11 +65,11 @@ Stack to_notation(char ex[])
         } else if (ex[i] == '-') {
             if (i == 0) {
                 add_to_string(temp, ex[i]);
-                if ((ex[i + 1] >= '0' && ex[i + 1] <= '9') || (ex[i] >= 'a' && ex[i] <= 'z') || ex[i + 1] == '-' || ex[i + 1] == '.')
+                if (not_operator(ex[i+1]) == 1 || ex[i + 1] == '-')
                     number_mode = 1;
-            } else if (ex[i - 1] == '(' || ex[i - 1] == '+' || ex[i - 1] == '-' || ex[i - 1] == '/' || ex[i - 1] == '*' || ex[i - 1] == '^') {
+            } else if (ex[i - 1] == '(' || ex[i - 1] == '-' || operator(ex[i-1]) == 1) {
                 add_to_string(temp, ex[i]);
-                if ((ex[i + 1] >= '0' && ex[i + 1] <= '9') || (ex[i] >= 'a' && ex[i] <= 'z') || ex[i + 1] == '-' || ex[i + 1] == '.')
+                if (not_operator(ex [i+1]) == 1 || ex[i + 1] == '-')
                     number_mode = 1;
             } else {
                 int ex_priority = get_priority(ex[i]);
@@ -108,7 +108,26 @@ Stack to_notation(char ex[])
     return expression;
 }
 
+int not_operator(char i)
+{
+    if ((i >= '0' && i <= '9') || (i >= 'a' && i <= 'z') || i == '.' || i == '_')
+    {
+        return 1;
+    }
+    return 0;
+}
+\
+int operator(char i)
+{
+
+    if (i == '+' || i == '/' || i == '*' || i == '^')
+    {
+        return 1;
+    }
+    return 0;
+}
 // get_priority по символу получаем число, равное приоритету операции
+
 int get_priority(char temp)
 {
     if (temp == '(' || temp == ')')
